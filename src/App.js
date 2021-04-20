@@ -1,25 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import {Route, Switch} from 'react-router-dom';
 
-function App() {
+
+
+import HomeScreen from './HomeScreen';
+import Data from './Data';
+
+class App extends Component{
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        isFetching: false,
+        users: []
+    };
+}
+  componentDidMount(){
+    
+  }
+
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <Switch>
+            <Route exact path="/" component={HomeScreen} />
+            <Route exact path="/data" component={Data} />
+        </Switch>
+        );
+}
 }
 
 export default App;
+
